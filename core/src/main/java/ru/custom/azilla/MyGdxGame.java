@@ -15,7 +15,7 @@ public class MyGdxGame extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        bird = new Bird(100, 100, 17 * 10, 12 * 10, false);
+        bird = new Bird(100, 100, 17 * 10, 12 * 10);
     }
 
     @Override
@@ -30,11 +30,9 @@ public class MyGdxGame extends ApplicationAdapter {
     }
 
     public void handleInput() {
-        if (!GameSettings.MODE) {
-            if (Gdx.input.justTouched()) {
-                bird.jump();
-            }
-        } else dispose(); // Крашит игру
+        if (Gdx.input.justTouched()) {
+            bird.jump();
+        }
     }
 
     @Override
