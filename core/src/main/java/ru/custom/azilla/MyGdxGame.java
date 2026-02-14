@@ -7,17 +7,29 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import java.util.Random;
+
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class MyGdxGame extends ApplicationAdapter {
+    Random random = new Random();
     private SpriteBatch batch;
     private Bird bird;
-    private Tube tube;
+    private Tube[] tubeArray;
+    int tubeWidth = 136;
+    int distanceBetweenPipes;
 
     @Override
     public void create() {
+        System.out.println("Where is output?");
         batch = new SpriteBatch();
         bird = new Bird(100, 100, 17 * 10, 12 * 10);
-        tube = new Tube(GameSettings.SCREEN_X + 10);
+        tubeArray = new Tube[GameSettings.COUNT_OF_PIPES];
+        distanceBetweenPipes = (tubeWidth + GameSettings.SCREEN_X) / GameSettings.COUNT_OF_PIPES;
+        for (int i = 0; i < tubeArray.length; i++) {
+            tubeArray[i] = new Tube(
+                GameSettings.SCREEN_X + i * distanceBetweenPipes
+            );
+        }
     }
 
     @Override
@@ -25,11 +37,16 @@ public class MyGdxGame extends ApplicationAdapter {
 
         handleInput();
         bird.move();
-        tube.move();
+        for (int i = 0; i < tubeArray.length; i++) {
+            tubeArray[i].move();
+            if (tubeArray[i].isHit(bird)) System.out.println("We got a hit!" + random.nextInt(1000000000));
+        }
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         batch.begin();
         bird.draw(batch);
-        tube.draw(batch);
+        for (int i = 0; i < tubeArray.length; i++) {
+            tubeArray[i].draw(batch);
+        }
         batch.end();
     }
 
@@ -43,6 +60,8 @@ public class MyGdxGame extends ApplicationAdapter {
     public void dispose() {
         batch.dispose();
         bird.dispose();
-        tube.dispose();
+        for (int i = 0; i < tubeArray.length; i++) {
+            tubeArray[i].dispose();
+        }
     }
 }

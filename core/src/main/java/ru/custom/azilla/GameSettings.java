@@ -26,6 +26,7 @@ public class GameSettings {
 
     public static int PIPE_GAP = 300;
     public static int PIPE_MIN_Y = 100;
+    public static int COUNT_OF_PIPES = 3;
 
     public static float GRAVITY = -5f; // Измеряется в пикселях за секунду
     public static float GRAVITY_MULTIPLIER = 3f / 60;
