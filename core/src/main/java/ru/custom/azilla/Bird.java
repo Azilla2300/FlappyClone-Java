@@ -3,10 +3,12 @@ package ru.custom.azilla;
 import static ru.custom.azilla.GameSettings.*;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Bird {
 
     Texture[] textureArray = BIRD_TEXTURES;
+    TextureRegion textureRegion;
     int x;
     float y;
     int width;
@@ -25,10 +27,15 @@ public class Bird {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        currentFrame = (frameCounter / 5) % textureArray.length;
+        currentFrame = (frameCounter / 10) % textureArray.length;
         frameCounter++;
-
-        spriteBatch.draw(textureArray[currentFrame], x, y, width, height);
+        if (!MODE) spriteBatch.draw(textureArray[currentFrame], x, y, width, height);
+        else {
+            textureRegion = new TextureRegion(textureArray[currentFrame]);
+            float rotation = velocity * 1.5f;
+            spriteBatch.draw(textureRegion, x, y, 0, 0,
+                width, height, 1 ,1, rotation);
+        }
     }
 
     public void jump() {
@@ -50,6 +57,8 @@ public class Bird {
         } else {
             y += velocity;
             velocity += GRAVITY * GRAVITY_MULTIPLIER;
+            if (velocity >= TERMINAL_VELOCITY) velocity = TERMINAL_VELOCITY;
+            if (velocity <= -TERMINAL_VELOCITY) velocity = -TERMINAL_VELOCITY;
         }
     }
     public void dispose() {

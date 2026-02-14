@@ -2,8 +2,6 @@ package ru.custom.azilla.lwjgl3;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-
-import ru.custom.azilla.GameSettings;
 import ru.custom.azilla.MyGdxGame;
 
 /** Launches the desktop (LWJGL3) application. */

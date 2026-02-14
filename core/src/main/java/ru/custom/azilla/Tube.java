@@ -1,9 +1,7 @@
 package ru.custom.azilla;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import java.util.Random;
 
 public class Tube {

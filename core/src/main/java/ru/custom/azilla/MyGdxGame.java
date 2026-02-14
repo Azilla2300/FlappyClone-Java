@@ -1,9 +1,7 @@
 package ru.custom.azilla;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -37,15 +35,15 @@ public class MyGdxGame extends ApplicationAdapter {
 
         handleInput();
         bird.move();
-        for (int i = 0; i < tubeArray.length; i++) {
-            tubeArray[i].move();
-            if (tubeArray[i].isHit(bird)) System.out.println("We got a hit!" + random.nextInt(1000000000));
+        for (Tube tube : tubeArray) {
+            tube.move();
+            if (tube.isHit(bird)) System.out.println("We got a hit!" + random.nextInt(1000000000));
         }
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         batch.begin();
         bird.draw(batch);
-        for (int i = 0; i < tubeArray.length; i++) {
-            tubeArray[i].draw(batch);
+        for (Tube tube : tubeArray) {
+            tube.draw(batch);
         }
         batch.end();
     }
@@ -60,8 +58,8 @@ public class MyGdxGame extends ApplicationAdapter {
     public void dispose() {
         batch.dispose();
         bird.dispose();
-        for (int i = 0; i < tubeArray.length; i++) {
-            tubeArray[i].dispose();
+        for (Tube tube : tubeArray) {
+            tube.dispose();
         }
     }
 }
