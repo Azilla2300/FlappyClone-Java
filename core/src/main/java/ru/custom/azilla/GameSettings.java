@@ -5,14 +5,19 @@ import com.badlogic.gdx.graphics.Texture;
 public class GameSettings {
     // Текстуры:
     public static Texture[] BIRD_TEXTURES = new Texture[] {
-        new Texture("textures/bird.png"),
-        new Texture("textures/bird1.png"),
-        new Texture("textures/bird2.png"),
-        new Texture("textures/bird1.png")
+        new Texture("textures/bird/bird.png"),
+        new Texture("textures/bird/bird1.png"),
+        new Texture("textures/bird/bird2.png"),
+        new Texture("textures/bird/bird1.png")
     };
 
-    public static String PIPE_RIGHT = "textures/tube1.png";
-    public static String PIPE_WRONG = "textures/tube2.png";
+    public static String[] BACKDROP_TEXTURES = {
+        "textures/backdrop/mountains.png",
+        "textures/backdrop/houses.png",
+        "textures/backdrop/trees.png"};
+
+    public static String PIPE_RIGHT = "textures/tube/tube1.png";
+    public static String PIPE_WRONG = "textures/tube/tube2.png";
 
     // Общие настройки:
     public static int SCREEN_X = 1280; // Разрешение экрана. Используется в логике и разрешении на десктопе
@@ -32,4 +37,6 @@ public class GameSettings {
     public static float GRAVITY_MULTIPLIER = 3f / 60;
     public static float JUMP_MULTIPLIER = -1f; // Сколько гравитаций будет применятся при прыжке
     public static int TERMINAL_VELOCITY = GameSettings.SCREEN_Y / 60;
+
+    public static int[] BACKDROP_SPEEDS = {1, 2, 5};
 }

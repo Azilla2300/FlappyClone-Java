@@ -15,10 +15,11 @@ public class MyGdxGame extends ApplicationAdapter {
     private Tube[] tubeArray;
     int tubeWidth = 136;
     int distanceBetweenPipes;
+    MovingBackdrop backdrop;
 
     @Override
     public void create() {
-        System.out.println("Where is output?");
+        backdrop = new MovingBackdrop();
         batch = new SpriteBatch();
         bird = new Bird(100, 100, 17 * 10, 12 * 10);
         tubeArray = new Tube[GameSettings.COUNT_OF_PIPES];
@@ -35,12 +36,14 @@ public class MyGdxGame extends ApplicationAdapter {
 
         handleInput();
         bird.move();
+        backdrop.move();
         for (Tube tube : tubeArray) {
             tube.move();
             if (tube.isHit(bird)) System.out.println("We got a hit!" + random.nextInt(1000000000));
         }
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         batch.begin();
+        backdrop.draw(batch);
         bird.draw(batch);
         for (Tube tube : tubeArray) {
             tube.draw(batch);
@@ -61,5 +64,6 @@ public class MyGdxGame extends ApplicationAdapter {
         for (Tube tube : tubeArray) {
             tube.dispose();
         }
+        backdrop.dispose();
     }
 }
