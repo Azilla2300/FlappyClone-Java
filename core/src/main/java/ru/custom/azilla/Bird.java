@@ -18,6 +18,7 @@ public class Bird {
     int frameCounter;
     int currentFrame;
     float velocity;
+    boolean enableAnimation = false;
 
     public Bird(int x, int y, int width, int height) {
         this.x = x;
@@ -27,8 +28,14 @@ public class Bird {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        currentFrame = (frameCounter / 10) % textureArray.length;
-        frameCounter++;
+        if (enableAnimation) {
+            currentFrame = (frameCounter / 10) % textureArray.length;
+            frameCounter++;
+        }
+        if (frameCounter / 10 == 9) {
+            frameCounter = 0;
+            enableAnimation = false;
+        }
         if (!MODE) spriteBatch.draw(textureArray[currentFrame], x, y, width, height);
         else {
             textureRegion = new TextureRegion(textureArray[currentFrame]);
@@ -45,6 +52,12 @@ public class Bird {
         } else {
             if (velocity <= 0) velocity = 0;
             velocity += GRAVITY * JUMP_MULTIPLIER;
+        }
+        if (!enableAnimation) enableAnimation = true;
+        else {
+            while (frameCounter / 10 % textureArray.length > textureArray.length) {
+                frameCounter = frameCounter - 10 * textureArray.length;
+            }
         }
     }
     public void move() {
