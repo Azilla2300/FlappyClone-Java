@@ -40,10 +40,6 @@ public class MyGdxGame extends ApplicationAdapter {
         handleInput();
         bird.move();
         backdrop.move();
-        for (Tube tube : tubeArray) {
-            tube.move();
-            if (tube.isHit(bird)) System.out.println("We got a hit!" + random.nextInt(1000000000));
-        }
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         batch.begin();
         backdrop.draw(batch);
@@ -51,6 +47,10 @@ public class MyGdxGame extends ApplicationAdapter {
         for (Tube tube : tubeArray) {
             tube.draw(batch);
             if (tube.shouldAddPoints(bird)) pointCounter++;
+            tube.move();
+            if (tube.isHit(bird)) {
+                System.out.println("We got a hit!" + random.nextInt(1000000000));
+            }
         }
         pointCounterTxt.draw(batch, "Points: " + pointCounter);
         batch.end();

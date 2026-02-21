@@ -33,7 +33,7 @@ public class Tube {
     }
     boolean isHit(Bird bird) {
         checkDrawableY();
-        boolean matchX = bird.width + bird.x > x && tubeWidth + x < bird.x;
+        boolean matchX = bird.width + bird.x > x && tubeWidth + x > bird.x;
         if (matchX) {
             if (bird.y + bird.height > drawableY1) return true;
             else if (bird.y < centerY - GameSettings.PIPE_GAP / 2) return true;
