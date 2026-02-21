@@ -16,12 +16,15 @@ public class MyGdxGame extends ApplicationAdapter {
     int tubeWidth = 136;
     int distanceBetweenPipes;
     MovingBackdrop backdrop;
+    TextView pointCounterTxt;
+    int pointCounter;
 
     @Override
     public void create() {
         backdrop = new MovingBackdrop();
         batch = new SpriteBatch();
         bird = new Bird(100, 100, 17 * 10, 12 * 10);
+        pointCounterTxt = new TextView(100, 100);
         tubeArray = new Tube[GameSettings.COUNT_OF_PIPES];
         distanceBetweenPipes = (tubeWidth + GameSettings.SCREEN_X) / GameSettings.COUNT_OF_PIPES;
         for (int i = 0; i < tubeArray.length; i++) {
@@ -29,11 +32,11 @@ public class MyGdxGame extends ApplicationAdapter {
                 GameSettings.SCREEN_X + i * distanceBetweenPipes
             );
         }
+        pointCounter = 0;
     }
 
     @Override
     public void render() {
-
         handleInput();
         bird.move();
         backdrop.move();
@@ -47,7 +50,9 @@ public class MyGdxGame extends ApplicationAdapter {
         bird.draw(batch);
         for (Tube tube : tubeArray) {
             tube.draw(batch);
+            if (tube.shouldAddPoints(bird)) pointCounter++;
         }
+        pointCounterTxt.draw(batch, "Points: " + pointCounter);
         batch.end();
     }
 
@@ -65,5 +70,6 @@ public class MyGdxGame extends ApplicationAdapter {
             tube.dispose();
         }
         backdrop.dispose();
+        pointCounterTxt.dispose();
     }
 }

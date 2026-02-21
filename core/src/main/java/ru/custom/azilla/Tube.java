@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Tube {
     Random random = new Random();
+    boolean addedPoints = false;
     float x;
     int centerY;
     Texture tubeRight;
@@ -27,6 +28,7 @@ public class Tube {
         if (x <= -10 - tubeWidth) {
             x = GameSettings.SCREEN_X + 10;
             randomCenterY();
+            addedPoints = false;
         }
     }
     boolean isHit(Bird bird) {
@@ -53,5 +55,12 @@ public class Tube {
     void dispose() {
         tubeRight.dispose();
         tubeWrong.dispose();
+    }
+    boolean shouldAddPoints(Bird bird) {
+        if (bird.x > x + tubeWidth && !addedPoints) {
+            addedPoints = true;
+            return true;
+        }
+        return false;
     }
 }

@@ -25,18 +25,25 @@ public class GameSettings {
 
     public static boolean MODE = false; // Система скоростей (обычная скорость (false) / гравитация (true))
 
+    // Размер шрифта
+    public static int FONTSIZE = 72;
+
+    // Птица
     public static int BIRD_FALL_SPEED = -5;
     public static int BIRD_JUMP_HEIGHT = 100;
     public static int BIRD_JUMP_SPEED = 10;
 
+    // Трубы
     public static int PIPE_GAP = 350;
     public static int PIPE_MIN_Y = 100;
     public static int COUNT_OF_PIPES = 3;
 
+    // Гравитация
     public static float GRAVITY = -5f; // Измеряется в пикселях за секунду
     public static float GRAVITY_MULTIPLIER = 3f / 60;
     public static float JUMP_MULTIPLIER = -1f; // Сколько гравитаций будет применятся при прыжке
     public static int TERMINAL_VELOCITY = GameSettings.SCREEN_Y / 60;
 
+    // Фон
     public static int[] BACKDROP_SPEEDS = {1, 2, 5};
 }
