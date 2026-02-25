@@ -23,7 +23,7 @@ public class Tube {
         tubeWrong = new Texture(GameSettings.PIPE_WRONG);
         randomCenterY();
     }
-    void move() {
+    public void move() {
         x -= 8.5f;
         if (x <= -10 - tubeWidth) {
             x = GameSettings.SCREEN_X + 10;
@@ -31,7 +31,7 @@ public class Tube {
             addedPoints = false;
         }
     }
-    boolean isHit(Bird bird) {
+    public boolean isHit(Bird bird) {
         checkDrawableY();
         boolean matchX = bird.width + bird.x > x && tubeWidth + x > bird.x;
         if (matchX) {
@@ -40,7 +40,7 @@ public class Tube {
         }
         return false;
     }
-    void draw(SpriteBatch batch) {
+    public void draw(SpriteBatch batch) {
         checkDrawableY();
         batch.draw(tubeWrong, x, drawableY1, tubeWidth, tubeLength);
         batch.draw(tubeRight, x, drawableY2, tubeWidth, tubeLength);
@@ -52,11 +52,11 @@ public class Tube {
         drawableY1 = centerY + GameSettings.PIPE_GAP / 2; // Для tubeWrong
         drawableY2 = centerY - (tubeLength + GameSettings.PIPE_GAP / 2); // Для tubeRight
     }
-    void dispose() {
+    public void dispose() {
         tubeRight.dispose();
         tubeWrong.dispose();
     }
-    boolean shouldAddPoints(Bird bird) {
+    public boolean shouldAddPoints(Bird bird) {
         if (bird.x > x + tubeWidth && !addedPoints) {
             addedPoints = true;
             return true;

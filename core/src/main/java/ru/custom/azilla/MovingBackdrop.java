@@ -13,17 +13,17 @@ public class MovingBackdrop {
             parts[i] = new BackdropPart(textures[i], speeds[i]);
         }
     }
-    void move() {
+    public void move() {
         for (BackdropPart onePart : parts) {
             onePart.move();
         }
     }
-    void draw(SpriteBatch batch) {
+    public void draw(SpriteBatch batch) {
         for (BackdropPart onePart : parts) {
             onePart.draw(batch);
         }
     }
-    void dispose() {
+    public void dispose() {
         for (BackdropPart onePart : parts) {
             onePart.dispose();
         }
