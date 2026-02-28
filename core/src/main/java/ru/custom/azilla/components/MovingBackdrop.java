@@ -1,11 +1,12 @@
-package ru.custom.azilla;
+package ru.custom.azilla.components;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import ru.custom.azilla.GameSettings;
 
 public class MovingBackdrop {
     BackdropPart[] parts = new BackdropPart[GameSettings.BACKDROP_TEXTURES.length];
-    int speed;
+
     public MovingBackdrop() {
         String[] textures = GameSettings.BACKDROP_TEXTURES;
         int[] speeds = GameSettings.BACKDROP_SPEEDS;

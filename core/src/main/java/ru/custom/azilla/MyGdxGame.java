@@ -20,4 +20,7 @@ public class MyGdxGame extends Game {
         gameScreen = new GameScreen(this);
         setScreen(menuScreen);
     }
+    public void dispose() {
+        batch.dispose();
+    }
 }

@@ -19,6 +19,8 @@ public class GameSettings {
     public static String PIPE_RIGHT = "textures/tube/tube1.png";
     public static String PIPE_WRONG = "textures/tube/tube2.png";
 
+    public static String DEFAULT_BUTTON = "textures/buttons/buttonDefault.png";
+
     // Общие настройки:
     public static int SCREEN_X = 1280; // Разрешение экрана. Используется в логике и разрешении на десктопе
     public static int SCREEN_Y = 720;

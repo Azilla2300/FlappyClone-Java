@@ -9,9 +9,9 @@ import java.util.Random;
 
 import ru.custom.azilla.Bird;
 import ru.custom.azilla.GameSettings;
-import ru.custom.azilla.MovingBackdrop;
+import ru.custom.azilla.components.MovingBackdrop;
 import ru.custom.azilla.MyGdxGame;
-import ru.custom.azilla.TextView;
+import ru.custom.azilla.components.TextView;
 import ru.custom.azilla.Tube;
 
 public class GameScreen implements Screen {

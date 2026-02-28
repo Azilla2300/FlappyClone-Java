@@ -6,14 +6,20 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import ru.custom.azilla.GameSettings;
 import ru.custom.azilla.MyGdxGame;
+import ru.custom.azilla.components.TextButton;
 
 public class MenuScreen implements Screen {
     MyGdxGame myGdxGame;
     SpriteBatch batch;
+    TextButton startButton;
     public MenuScreen(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
         this.batch = myGdxGame.batch;
+        startButton = new TextButton(GameSettings.SCREEN_X / 4,
+            GameSettings.SCREEN_Y / 4,
+            GameSettings.SCREEN_X / 2, GameSettings.SCREEN_Y / 2, "Start");
     }
     @Override
     public void show() {
@@ -23,8 +29,13 @@ public class MenuScreen implements Screen {
     @Override
     public void render(float delta) {
         ScreenUtils.clear(Color.ORANGE);
+        batch.begin();
+        startButton.draw(batch);
+        batch.end();
         if (Gdx.input.justTouched()) {
-            myGdxGame.setScreen(myGdxGame.gameScreen);
+            if (startButton.isTouched(Gdx.input.getX(), GameSettings.SCREEN_Y - Gdx.input.getY())) {
+                myGdxGame.setScreen(myGdxGame.gameScreen);
+            }
         }
     }
 
@@ -50,6 +61,6 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        startButton.dispose();
     }
 }
