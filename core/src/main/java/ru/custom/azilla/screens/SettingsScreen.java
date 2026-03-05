@@ -1,4 +1,4 @@
-package ru.custom.azilla.screen;
+package ru.custom.azilla.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -6,21 +6,23 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import ru.custom.azilla.GameSettings;
 import ru.custom.azilla.MyGdxGame;
 import ru.custom.azilla.components.TextButton;
+import ru.custom.azilla.constants.GameSettings;
 
-public class MenuScreen implements Screen {
+public class SettingsScreen implements Screen {
+
     MyGdxGame myGdxGame;
+    TextButton menuButton;
     SpriteBatch batch;
-    TextButton startButton;
-    public MenuScreen(MyGdxGame myGdxGame) {
+
+    public SettingsScreen(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
         this.batch = myGdxGame.batch;
-        startButton = new TextButton(GameSettings.SCREEN_X / 4,
-            GameSettings.SCREEN_Y / 4,
-            GameSettings.SCREEN_X / 2, GameSettings.SCREEN_Y / 2, "Start");
+        menuButton = new TextButton(50, GameSettings.SCREEN_Y - 150,
+            100, 100, GameSettings.MENU_BUTTON, "");
     }
+
     @Override
     public void show() {
 
@@ -30,11 +32,16 @@ public class MenuScreen implements Screen {
     public void render(float delta) {
         ScreenUtils.clear(Color.ORANGE);
         batch.begin();
-        startButton.draw(batch);
+        menuButton.draw(batch);
         batch.end();
+        handleInput();
+    }
+
+    void handleInput() {
         if (Gdx.input.justTouched()) {
-            if (startButton.isTouched(Gdx.input.getX(), GameSettings.SCREEN_Y - Gdx.input.getY())) {
-                myGdxGame.setScreen(myGdxGame.gameScreen);
+            int trueY = GameSettings.SCREEN_Y - Gdx.input.getY();
+            if (menuButton.isTouched(Gdx.input.getX(), trueY)) {
+                myGdxGame.setScreen(myGdxGame.menuScreen);
             }
         }
     }
@@ -61,6 +68,6 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-        startButton.dispose();
+        menuButton.dispose();
     }
 }

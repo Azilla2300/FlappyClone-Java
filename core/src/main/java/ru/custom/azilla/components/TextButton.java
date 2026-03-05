@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import ru.custom.azilla.GameSettings;
+import ru.custom.azilla.constants.GameSettings;
 
 public class TextButton {
 
@@ -18,9 +18,7 @@ public class TextButton {
     int buttonWidth;
     int buttonHeight;
 
-    int textWidth;
-    int textHeight;
-    public TextButton(int x, int y, int buttonWidth, int buttonHeight, String text) {
+    public TextButton(int x, int y, int buttonWidth, int buttonHeight, String texture, String text) {
         this.x = x;
         this.y = y;
 
@@ -28,16 +26,11 @@ public class TextButton {
         this.buttonHeight = buttonHeight;
 
         this.text = text;
-        textView = new TextView(0,0);
+        textView = new TextView(x + buttonWidth / 2,
+            y + buttonHeight / 2,
+            text, true);
 
-        texture = new Texture(GameSettings.DEFAULT_BUTTON);
-
-        GlyphLayout glyphLayout = new GlyphLayout(textView.font, text);
-        textWidth = (int) glyphLayout.width;
-        textHeight = (int) glyphLayout.height;
-
-        textView.x = x + (buttonWidth - textWidth) / 2;
-        textView.y = y + (buttonHeight + textHeight) / 2;
+        this.texture = new Texture(texture);
     }
     public boolean isTouched(int touchX, int touchY) {
         boolean touchedX = x < touchX && x + buttonWidth > touchX;
@@ -46,7 +39,7 @@ public class TextButton {
     }
     public void draw(SpriteBatch batch) {
         batch.draw(texture, x, y, buttonWidth, buttonHeight);
-        textView.draw(batch, text);
+        textView.draw(batch);
     }
     public void dispose() {
         texture.dispose();

@@ -1,5 +1,6 @@
-package ru.custom.azilla;
+package ru.custom.azilla.constants;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public class GameSettings {
@@ -11,19 +12,24 @@ public class GameSettings {
         new Texture("textures/bird/bird1.png")
     };
 
-    public static String[] BACKDROP_TEXTURES = {
-        "textures/backdrop/mountains.png",
+    public static String[][] BACKDROP_TEXTURES = {
+        {"textures/backdrop/cool_screenshot_that_i_got_lol.png"},
+        {"textures/backdrop/mountains.png",
         "textures/backdrop/houses.png",
-        "textures/backdrop/trees.png"};
+        "textures/backdrop/trees.png"}};
 
     public static String PIPE_RIGHT = "textures/tube/tube1.png";
     public static String PIPE_WRONG = "textures/tube/tube2.png";
 
     public static String DEFAULT_BUTTON = "textures/buttons/buttonDefault.png";
+    public static String SETTINGS_BUTTON = "textures/buttons/buttonSettings.png";
+    public static String MENU_BUTTON = "textures/buttons/buttonMenu.png";
+    public static String RESTART_BUTTON = "textures/buttons/buttonRestart.png";
+    public static String EXIT_BUTTON = "textures/buttons/buttonExit.png";
 
     // Общие настройки:
-    public static int SCREEN_X = 1280; // Разрешение экрана. Используется в логике и разрешении на десктопе
-    public static int SCREEN_Y = 720;
+    public static int SCREEN_X = Gdx.graphics.getWidth(); // Разрешение экрана. Используется в логике и разрешении на десктопе
+    public static int SCREEN_Y = Gdx.graphics.getHeight();
 
     public static boolean MODE = false; // Система скоростей (обычная скорость (false) / гравитация (true))
 
@@ -47,5 +53,5 @@ public class GameSettings {
     public static int TERMINAL_VELOCITY = GameSettings.SCREEN_Y / 60;
 
     // Фон
-    public static int[] BACKDROP_SPEEDS = {1, 2, 5};
+    public static int[][] BACKDROP_SPEEDS = {{0}, {1, 2, 5}};
 }
