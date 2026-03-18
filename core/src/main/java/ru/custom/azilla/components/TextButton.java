@@ -1,16 +1,16 @@
 package ru.custom.azilla.components;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import ru.custom.azilla.constants.GameSettings;
+import ru.custom.azilla.managers.AudioManager;
 
 public class TextButton {
 
     Texture texture;
     String text;
     TextView textView;
+    AudioManager audioManager;
 
     int x;
     int y;
@@ -18,7 +18,7 @@ public class TextButton {
     int buttonWidth;
     int buttonHeight;
 
-    public TextButton(int x, int y, int buttonWidth, int buttonHeight, String texture, String text) {
+    public TextButton(int x, int y, int buttonWidth, int buttonHeight, String texture, String text, AudioManager audioManager) {
         this.x = x;
         this.y = y;
 
@@ -31,11 +31,15 @@ public class TextButton {
             text, true);
 
         this.texture = new Texture(texture);
+
+        this.audioManager = audioManager;
     }
     public boolean isTouched(int touchX, int touchY) {
         boolean touchedX = x < touchX && x + buttonWidth > touchX;
         boolean touchedY = y < touchY && y + buttonHeight > touchY;
-        return touchedX && touchedY;
+        boolean touched = touchedX && touchedY;
+        if (touched) audioManager.click.play();
+        return touched;
     }
     public void draw(SpriteBatch batch) {
         batch.draw(texture, x, y, buttonWidth, buttonHeight);

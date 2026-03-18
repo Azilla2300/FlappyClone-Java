@@ -20,7 +20,8 @@ public class SettingsScreen implements Screen {
         this.myGdxGame = myGdxGame;
         this.batch = myGdxGame.batch;
         menuButton = new TextButton(50, GameSettings.SCREEN_Y - 150,
-            100, 100, GameSettings.MENU_BUTTON, "");
+            100, 100, GameSettings.MENU_BUTTON, "",
+            myGdxGame.audioManager);
     }
 
     @Override

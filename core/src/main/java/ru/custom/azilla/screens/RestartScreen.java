@@ -24,10 +24,12 @@ public class RestartScreen implements Screen {
         this.myGdxGame = myGdxGame;
         this.batch = myGdxGame.batch;
         menuButton = new TextButton(50, GameSettings.SCREEN_Y - 150,
-            100, 100, GameSettings.MENU_BUTTON, "");
+            100, 100, GameSettings.MENU_BUTTON, "",
+            myGdxGame.audioManager);
         restartButton = new TextButton(GameSettings.SCREEN_X / 2 - 150,
             GameSettings.SCREEN_Y / 2 - 150,
-            300, 300, GameSettings.RESTART_BUTTON, "");
+            300, 300, GameSettings.RESTART_BUTTON,
+            "", myGdxGame.audioManager);
         gameOver = new TextView(GameSettings.SCREEN_X / 2,
             GameSettings.SCREEN_Y, "Game over!", true);
         gameOver.y = GameSettings.SCREEN_Y - 20;

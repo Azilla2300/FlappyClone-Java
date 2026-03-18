@@ -5,10 +5,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import ru.custom.azilla.managers.AudioManager;
+
 public class Bird {
 
     Texture[] textureArray = BIRD_TEXTURES;
     TextureRegion textureRegion;
+
+    AudioManager audioManager;
 
     int x;
     float y;
@@ -23,11 +27,13 @@ public class Bird {
     boolean isJumping = false;
     boolean enableAnimation = false;
 
-    public Bird(int x, int y, int width, int height) {
+    public Bird(int x, int y, int width, int height, AudioManager audioManager) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+
+        this.audioManager = audioManager;
     }
 
     public void draw(SpriteBatch batch) {
@@ -62,6 +68,7 @@ public class Bird {
         }
     }
     public void jump() {
+        audioManager.fly.play();
         if (!MODE) {
             isJumping = true;
             jumpStartY = (int) y;

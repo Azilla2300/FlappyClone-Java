@@ -30,17 +30,22 @@ public class MenuScreen implements Screen {
             GameSettings.SCREEN_Y / 4,
             GameSettings.SCREEN_X / 2,
             GameSettings.SCREEN_Y / 2,
-            GameSettings.DEFAULT_BUTTON, "Start");
+            GameSettings.DEFAULT_BUTTON, "Start",
+            myGdxGame.audioManager);
         settingsButton = new TextButton(GameSettings.SCREEN_X - 150,
             50, 100, 100,
-            GameSettings.SETTINGS_BUTTON, "");
+            GameSettings.SETTINGS_BUTTON, "",
+            myGdxGame.audioManager);
         exitButton = new TextButton(50, 50,
-            300, 100, GameSettings.EXIT_BUTTON, "");
+            300, 100, GameSettings.EXIT_BUTTON,
+            "", myGdxGame.audioManager);
         movingBackdrop = new MovingBackdrop(0);
     }
     @Override
     public void show() {
-
+        if (!myGdxGame.audioManager.menuMusic.isPlaying()) {
+            myGdxGame.audioManager.menuMusic.play();
+        }
     }
 
     @Override
@@ -60,6 +65,7 @@ public class MenuScreen implements Screen {
         if (Gdx.input.justTouched()) {
             int trueY = GameSettings.SCREEN_Y - Gdx.input.getY();
             if (startButton.isTouched(Gdx.input.getX(), trueY)) {
+                myGdxGame.audioManager.menuMusic.stop();
                 myGdxGame.setScreen(myGdxGame.gameScreen);
             }
             if (settingsButton.isTouched(Gdx.input.getX(), trueY)) {

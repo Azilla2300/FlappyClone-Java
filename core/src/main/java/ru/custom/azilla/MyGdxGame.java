@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import ru.custom.azilla.managers.AudioManager;
 import ru.custom.azilla.screens.GameScreen;
 import ru.custom.azilla.screens.MenuScreen;
 import ru.custom.azilla.screens.RestartScreen;
@@ -16,12 +17,15 @@ public class MyGdxGame extends Game {
     public GameScreen gameScreen;
     public RestartScreen restartScreen;
     public SettingsScreen settingsScreen;
+    public AudioManager audioManager;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
 
         Gdx.graphics.setTitle("Flappy clone!!! Also, why did i changed that lol? :Р");
+
+        audioManager = new AudioManager();
 
         menuScreen = new MenuScreen(this);
         gameScreen = new GameScreen(this);

@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
 
         backdrop = new MovingBackdrop(1);
         bird = new Bird(100, GameSettings.SCREEN_Y / 2 - 17 * 5,
-            17 * 10, 12 * 10);
+            17 * 10, 12 * 10, myGdxGame.audioManager);
         pointCounterTxt = new TextView(100, 100,
             "Points: ", false);
         tubeArray = new Tube[GameSettings.COUNT_OF_PIPES];
@@ -49,7 +49,7 @@ public class GameScreen implements Screen {
     }
     @Override
     public void show() {
-
+        myGdxGame.audioManager.gameMusic.play();
     }
 
     public void handleInput() {
@@ -72,6 +72,7 @@ public class GameScreen implements Screen {
             tube.move();
             if (tube.isHit(bird)) {
                 System.out.println("We got a hit!" + random.nextInt(1000000000));
+                myGdxGame.audioManager.death.play();
                 myGdxGame.setScreen(myGdxGame.restartScreen);
             }
         }
@@ -97,7 +98,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void hide() {
-
+        myGdxGame.audioManager.gameMusic.stop();
     }
 
     @Override

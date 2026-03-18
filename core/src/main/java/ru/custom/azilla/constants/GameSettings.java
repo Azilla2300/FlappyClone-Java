@@ -27,6 +27,14 @@ public class GameSettings {
     public static String RESTART_BUTTON = "textures/buttons/buttonRestart.png";
     public static String EXIT_BUTTON = "textures/buttons/buttonExit.png";
 
+    // Звуки и музыка
+    public static String MENU_MUSIC = "music/menu.mp3";
+    public static String GAME_MUSIC = "music/work.ogg";
+
+    public static String CLICK_SOUND = "sounds/click.ogg";
+    public static String DEATH_SOUND = "sounds/orb.ogg";
+    public static String FLY_SOUND = "sounds/pop.ogg";
+
     // Общие настройки:
     public static int SCREEN_X = Gdx.graphics.getWidth(); // Разрешение экрана. Используется в логике и разрешении на десктопе
     public static int SCREEN_Y = Gdx.graphics.getHeight();
