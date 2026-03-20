@@ -43,9 +43,7 @@ public class MenuScreen implements Screen {
     }
     @Override
     public void show() {
-        if (!myGdxGame.audioManager.menuMusic.isPlaying()) {
-            myGdxGame.audioManager.menuMusic.play();
-        }
+        myGdxGame.audioManager.playMusic(0);
     }
 
     @Override
@@ -65,7 +63,7 @@ public class MenuScreen implements Screen {
         if (Gdx.input.justTouched()) {
             int trueY = GameSettings.SCREEN_Y - Gdx.input.getY();
             if (startButton.isTouched(Gdx.input.getX(), trueY)) {
-                myGdxGame.audioManager.menuMusic.stop();
+                myGdxGame.audioManager.stopMusic(0);
                 myGdxGame.setScreen(myGdxGame.gameScreen);
             }
             if (settingsButton.isTouched(Gdx.input.getX(), trueY)) {

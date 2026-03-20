@@ -27,6 +27,12 @@ public class GameSettings {
     public static String RESTART_BUTTON = "textures/buttons/buttonRestart.png";
     public static String EXIT_BUTTON = "textures/buttons/buttonExit.png";
 
+    public static String TOGGLE_ON = "textures/toggle/on.png";
+    public static String TOGGLE_OFF = "textures/toggle/off.png";
+
+    public static String SLIDER_BAR = "textures/slider/bar.png";
+    public static String SLIDER_HEAD = "textures/slider/head.png";
+
     // Звуки и музыка
     public static String MENU_MUSIC = "music/menu.mp3";
     public static String GAME_MUSIC = "music/work.ogg";

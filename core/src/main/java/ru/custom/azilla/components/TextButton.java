@@ -38,7 +38,7 @@ public class TextButton {
         boolean touchedX = x < touchX && x + buttonWidth > touchX;
         boolean touchedY = y < touchY && y + buttonHeight > touchY;
         boolean touched = touchedX && touchedY;
-        if (touched) audioManager.click.play();
+        if (touched) audioManager.playSound(0);
         return touched;
     }
     public void draw(SpriteBatch batch) {

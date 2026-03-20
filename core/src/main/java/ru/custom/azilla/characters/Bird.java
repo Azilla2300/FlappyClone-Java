@@ -68,7 +68,7 @@ public class Bird {
         }
     }
     public void jump() {
-        audioManager.fly.play();
+        audioManager.playSound(2);
         if (!MODE) {
             isJumping = true;
             jumpStartY = (int) y;

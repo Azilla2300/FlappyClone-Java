@@ -49,7 +49,7 @@ public class GameScreen implements Screen {
     }
     @Override
     public void show() {
-        myGdxGame.audioManager.gameMusic.play();
+        myGdxGame.audioManager.playMusic(1);
     }
 
     public void handleInput() {
@@ -72,7 +72,7 @@ public class GameScreen implements Screen {
             tube.move();
             if (tube.isHit(bird)) {
                 System.out.println("We got a hit!" + random.nextInt(1000000000));
-                myGdxGame.audioManager.death.play();
+                myGdxGame.audioManager.playSound(1);
                 myGdxGame.setScreen(myGdxGame.restartScreen);
             }
         }
@@ -98,7 +98,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void hide() {
-        myGdxGame.audioManager.gameMusic.stop();
+        myGdxGame.audioManager.stopMusic(1);
     }
 
     @Override
