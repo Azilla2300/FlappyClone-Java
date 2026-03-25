@@ -9,7 +9,7 @@ import ru.custom.azilla.managers.AudioManager;
 
 public class Bird {
 
-    Texture[] textureArray = BIRD_TEXTURES;
+    Texture[] textureArray;
     TextureRegion textureRegion;
 
     AudioManager audioManager;
@@ -33,6 +33,10 @@ public class Bird {
         this.width = width;
         this.height = height;
 
+        textureArray = new Texture[BIRD_TEXTURES.length];
+        for (int i = 0; i < BIRD_TEXTURES.length; i++) {
+            textureArray[i] = new Texture(BIRD_TEXTURES[i]);
+        }
         this.audioManager = audioManager;
     }
 

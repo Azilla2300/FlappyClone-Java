@@ -1,38 +1,40 @@
 package ru.custom.azilla.constants;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 
 public class GameSettings {
     // Текстуры:
-    public static Texture[] BIRD_TEXTURES = new Texture[] {
-        new Texture("textures/bird/bird.png"),
-        new Texture("textures/bird/bird1.png"),
-        new Texture("textures/bird/bird2.png"),
-        new Texture("textures/bird/bird1.png")
-    };
-
+    // Bird
+    public static String[] BIRD_TEXTURES = {
+        "textures/bird/bird.png",
+        "textures/bird/bird1.png",
+        "textures/bird/bird2.png",
+        "textures/bird/bird1.png"};
+    // Backdrop
     public static String[][] BACKDROP_TEXTURES = {
         {"textures/backdrop/cool_screenshot_that_i_got_lol.png"},
         {"textures/backdrop/mountains.png",
         "textures/backdrop/houses.png",
         "textures/backdrop/trees.png"}};
-
+    // Pipe
     public static String PIPE_RIGHT = "textures/tube/tube1.png";
     public static String PIPE_WRONG = "textures/tube/tube2.png";
-
+    // Buttons
     public static String DEFAULT_BUTTON = "textures/buttons/buttonDefault.png";
     public static String SETTINGS_BUTTON = "textures/buttons/buttonSettings.png";
     public static String MENU_BUTTON = "textures/buttons/buttonMenu.png";
     public static String RESTART_BUTTON = "textures/buttons/buttonRestart.png";
     public static String EXIT_BUTTON = "textures/buttons/buttonExit.png";
-
+    // Toggle
     public static String TOGGLE_ON = "textures/toggle/on.png";
     public static String TOGGLE_OFF = "textures/toggle/off.png";
-
+    // Slider
     public static String SLIDER_BAR = "textures/slider/bar.png";
     public static String SLIDER_HEAD = "textures/slider/head.png";
-
+    // Leaderboard
+    public static String TROPHY1 = "textures/buttons/trophy.png";
+    public static String TROPHY2 = "textures/buttons/trophy2.png";
+    public static String TROPHY3 = "textures/buttons/trophy3.png";
     // Звуки и музыка
     public static String MENU_MUSIC = "music/menu.mp3";
     public static String GAME_MUSIC = "music/work.ogg";

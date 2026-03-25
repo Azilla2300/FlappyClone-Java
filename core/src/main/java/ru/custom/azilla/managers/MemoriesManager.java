@@ -20,4 +20,25 @@ public class MemoriesManager {
     public static boolean readSoundState() {
         return preference.getBoolean("isSoundOn", true);
     }
+    public static void saveResults(Integer[] scores) {
+        String saveString = "";
+        for (Integer score : scores) {
+            saveString += score + ";";
+        }
+        preference.putString("results", saveString);
+        preference.flush();
+    }
+    public static Integer[] readResults() {
+        String loadedString = preference.getString("results", "0;0;0;0;0");
+        String[] scores = loadedString.split(";");
+        Integer[] results = new Integer[scores.length];
+        for (int i = 0; i < results.length; i++) {
+            results[i] = Integer.valueOf(scores[i]);
+        }
+        return results;
+    }
+
+    public static void reset() {
+        preference.clear();
+    }
 }

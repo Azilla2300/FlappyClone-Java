@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import ru.custom.azilla.constants.GameSettings;
 import ru.custom.azilla.managers.AudioManager;
 import ru.custom.azilla.screens.GameScreen;
 import ru.custom.azilla.screens.MenuScreen;
@@ -34,7 +35,22 @@ public class MyGdxGame extends Game {
 
         setScreen(menuScreen);
     }
+
+    @Override
+    public void resize(int width, int height) {
+        GameSettings.SCREEN_X = width;
+        GameSettings.SCREEN_Y = height;
+        audioManager.stopMusic(0);
+        audioManager.stopMusic(1);
+        dispose();
+        create();
+    }
+
     public void dispose() {
         batch.dispose();
+        menuScreen.dispose();
+        gameScreen.dispose();
+        settingsScreen.dispose();
+        restartScreen.dispose();
     }
 }

@@ -18,7 +18,8 @@ public class TextButton {
     int buttonWidth;
     int buttonHeight;
 
-    public TextButton(int x, int y, int buttonWidth, int buttonHeight, String texture, String text, AudioManager audioManager) {
+    public TextButton(int x, int y, int buttonWidth, int buttonHeight,
+                      String texture, String text, AudioManager audioManager) {
         this.x = x;
         this.y = y;
 
@@ -44,6 +45,10 @@ public class TextButton {
     public void draw(SpriteBatch batch) {
         batch.draw(texture, x, y, buttonWidth, buttonHeight);
         textView.draw(batch);
+    }
+    public void draw(SpriteBatch batch, String text) {
+        batch.draw(texture, x, y, buttonWidth, buttonHeight);
+        textView.draw(batch, text);
     }
     public void dispose() {
         texture.dispose();
