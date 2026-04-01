@@ -18,7 +18,7 @@ public class Tube {
     int tubeWidth = 34 * 4;
     int drawableY1; // Для tubeWrong
     int drawableY2; // Для tubeRight
-    int otherside = GameSettings.PIPE_MIN_Y + GameSettings.PIPE_GAP / 2;
+    int otherside;
 
     boolean addedPoints = false;
 
@@ -27,6 +27,7 @@ public class Tube {
         tubeRight = new Texture(GameSettings.PIPE_RIGHT);
         tubeWrong = new Texture(GameSettings.PIPE_WRONG);
         randomCenterY();
+        getOtherside();
     }
 
     public void draw(SpriteBatch batch) {
@@ -44,7 +45,7 @@ public class Tube {
     }
 
     void randomCenterY() {
-        centerY = random.nextInt(GameSettings.SCREEN_Y - otherside * 2) + otherside;
+        centerY = random.nextInt(GameSettings.SCREEN_Y - getOtherside() * 2) + getOtherside();
     }
     void checkDrawableY() {
         drawableY1 = centerY + GameSettings.PIPE_GAP / 2; // Для tubeWrong
@@ -59,6 +60,11 @@ public class Tube {
             else if (bird.y < centerY - GameSettings.PIPE_GAP / 2) return true;
         }
         return false;
+    }
+    int getOtherside() {
+        otherside = GameSettings.PIPE_MIN_Y + GameSettings.PIPE_GAP / 2;
+        if (otherside < 1) return 0;
+        return otherside;
     }
     public boolean shouldAddPoints(Bird bird) {
         if (bird.x > x + tubeWidth && !addedPoints) {
